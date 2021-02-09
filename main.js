@@ -29,15 +29,13 @@ function createWindow () {
         minWidth: 780,
         minHeight: 560,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            contextIsolation: false,
+            enableRemoteModule: true
         }
     }
 
     // Load app settings
-    let runMinimized = settingsService.get('runMinimized')
-    if (runMinimized) {
-        mainWindowOptions.show = !runMinimized
-    }
     let preserveWindowSize = settingsService.get('preserveWindowSize')
     if (preserveWindowSize) {
         let width = settingsService.get('windowWidth')
@@ -66,16 +64,20 @@ function createWindow () {
     // Init menu
     menuService.createMenu()
 
+    let runMinimized = settingsService.get('runMinimized')
+    if (runMinimized) {
+        mainWindow.minimize();
+    }
+
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
 
-    // Before close
     let minimizeOnClose = settingsService.get('minimizeOnClose')
     if (minimizeOnClose) {
         mainWindow.on('close', (e) => {
             if (!app.isQuitting) {
                 e.preventDefault()
-                mainWindow.hide()
+                mainWindow.minimize()
             }
         })
     }
@@ -141,12 +143,7 @@ app.on('ready', initApp)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-    // On macOS it is common for applications and their menu bar
-    // to stay active until the user quits explicitly with Cmd + Q
-    // if (process.platform !== 'darwin')
-    // ^^^^ NOPE ;)
-    // Quit ANYWAY
-    app.quit()
+    app.quit();
 })
 
 app.on('activate', function () {
