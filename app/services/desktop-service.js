@@ -33,8 +33,8 @@ angApp.factory('DesktopService', (
         AppStateService.set(AppStateService.APP_STATE_DEFAULT) // Always set to default state before init
         desktopPlugin.register(login)
         let lang = navigator.language
-        let allowBookmarks = SettingsService.getSync('allowBookmarks')
-        let omemoDefault = SettingsService.getSync('omemoDefault')
+        let allowBookmarks = SettingsService.get('allowBookmarks')
+        let omemoDefault = SettingsService.get('omemoDefault')
         let xmppResource = XmppHelperService.getResourceFromJid(login)
         if (!xmppResource) {
             xmppResource = '.' + (Math.random().toString(36)+'00000000000000000').slice(2, 7) // Generate 5 char unique str
