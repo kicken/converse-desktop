@@ -7,7 +7,7 @@
     "postinstall": "electron-builder install-app-deps",
     "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder",
+    "dist": "electron-builder --mac",
     "dist:win64": "electron-builder --win --x64",
     "dist:linux64deb": "electron-builder --linux --x64"
   },
@@ -60,6 +60,7 @@
     },
     "linux": {
       "artifactName": "converse_desktop-${version}_${arch}.${ext}",
+      "icon": "resources/images/logo@2x.png",
       "target": [
         "deb",
         "tar.gz"
