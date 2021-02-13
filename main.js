@@ -66,7 +66,7 @@ function createWindow () {
 
     let runMinimized = settingsService.get('runMinimized')
     if (runMinimized) {
-        mainWindow.minimize();
+        mainWindow.hide();
     }
 
     // Open the DevTools.
@@ -77,7 +77,7 @@ function createWindow () {
         mainWindow.on('close', (e) => {
             if (!app.isQuitting) {
                 e.preventDefault()
-                mainWindow.minimize()
+                mainWindow.hide()
             }
         })
     }
