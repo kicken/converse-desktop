@@ -6,7 +6,7 @@ await import('./app/converse-plugins/desktop-settings.js')
 
 
 let websocket_url, bosh_service_url;
-const { connectionManager, login, password } = await api.credentials.get();
+const {connectionManager, login, password} = await api.credentials.get();
 const priority = await api.settings.get('priority') || 0;
 const omemo_default = await api.settings.get('omemo_default') || false;
 const show_self_in_roster = await api.settings.get('show_self_in_roster') || false;
@@ -18,8 +18,8 @@ if (connectionManager?.startsWith('ws')) {
 }
 
 converse.plugins.add('converse-debug', {
-    initialize () {
-        const { _converse } = this;
+    initialize() {
+        const {_converse} = this;
         window._converse = _converse;
     }
 });
@@ -40,7 +40,7 @@ converse.initialize({
     theme: 'dracula',
     view_mode: 'fullscreen',
     websocket_url,
-    whitelisted_plugins: ['converse-desktop-credentials', 'converse-desktop-trayicon', 'converse-desktop-settings'],
+    whitelisted_plugins: ['converse-debug', 'converse-desktop-credentials', 'converse-desktop-trayicon', 'converse-desktop-settings'],
     omemo_default,
     show_self_in_roster
 }).catch((reason) => {
