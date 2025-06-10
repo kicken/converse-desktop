@@ -54,25 +54,23 @@ menuService.createMenu = (window) => {
                 }
             },
             {
-                label: 'Encrypt by default (reconnects)',
+                label: 'Encrypt by default',
                 type: 'checkbox',
                 id: 'encrypt-by-default',
                 checked: settingsService.get('omemo_default'),
                 click: () => {
                     const menuItem = converse.getMenuItemById('encrypt-by-default');
                     settingsService.set('omemo_default', menuItem.checked);
-                    reload();
                 }
             },
             {
-                label: 'Show myself (reconnects)',
+                label: 'Show myself',
                 type: 'checkbox',
                 id: 'show-self-in-roster',
                 checked: settingsService.get('show_self_in_roster'),
                 click: () => {
                     const menuItem = converse.getMenuItemById('show-self-in-roster');
                     settingsService.set('show_self_in_roster', menuItem.checked);
-                    reload();
                 }
             },
             {
