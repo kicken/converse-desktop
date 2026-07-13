@@ -4,7 +4,7 @@
 
 const electronSettings = require('electron-settings')
 
-let settingsService = {}
+const settingsService = {}
 
 settingsService.get = (itemKey, fallback = null) => {
     const settingValue = electronSettings.getSync(itemKey)

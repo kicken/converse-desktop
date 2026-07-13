@@ -2,7 +2,7 @@ const { ipcRenderer, contextBridge } = require('electron');
 const changedHandlers = [];
 ipcRenderer.on('settings', function (e, method, setting, newValue) {
     if (method === 'changed') {
-        for (let handler of changedHandlers) {
+        for (const handler of changedHandlers) {
             handler.call(null, setting, newValue);
         }
     }
