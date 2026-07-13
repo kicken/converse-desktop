@@ -3,7 +3,6 @@
  */
 const { app, Menu, MenuItem } = require('electron')
 const settingsService = require('./settings-service')
-const { clearCredentials } = require('./credentials-service');
 const themeService = require(__dirname + '/../modules/theme-service');
 
 const menuService = {}
@@ -196,7 +195,6 @@ menuService.createMenu = (window) => {
             {
                 label: 'Clear Credentials',
                 click: async () => {
-                    await clearCredentials();
                     await window.webContents.session.clearStorageData();
                     reload();
                 }

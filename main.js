@@ -11,7 +11,6 @@ let mainWindow
 const trayService = require(__dirname + '/modules/tray-service')
 const menuService = require(__dirname + '/modules/menu-service')
 const settingsService = require(__dirname + '/modules/settings-service')
-const credentials = require(__dirname + '/modules/credentials-service')
 const themeService = require(__dirname + '/modules/theme-service')
 
 const isMac = process.platform === 'darwin'
@@ -134,10 +133,6 @@ function createWindow() {
 
     ipcMain.handle('trayService', (e, method, ...args) => {
         return trayService[method].apply(trayService, args);
-    });
-
-    ipcMain.handle('credentials', (e, method, ...args) => {
-        return credentials[method].apply(credentials, args);
     });
 
     mainWindow.on('ready-to-show', () => {

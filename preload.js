@@ -42,17 +42,6 @@ contextBridge.exposeInMainWorld('api', {
             return ipcRenderer.invoke('trayService', 'hideEnvelope');
         }
     },
-    credentials: {
-        get () {
-            return ipcRenderer.invoke('credentials', 'getCredentials');
-        },
-        save (service, login, password) {
-            return ipcRenderer.invoke('credentials', 'saveCredentials', service, login, password);
-        },
-        clear () {
-            return ipcRenderer.invoke('credentials', 'clearCredentials');
-        }
-    },
     app: {
         quit () {
             ipcRenderer.send('app-quit');
