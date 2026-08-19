@@ -1,7 +1,6 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow, ipcMain, shell, dialog} = require('electron')
+const { app, BrowserWindow, ipcMain, shell, dialog } = require('electron')
 const path = require('path');
-const contextMenu = require('electron-context-menu').default;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -16,12 +15,13 @@ const themeService = require(__dirname + '/modules/theme-service')
 const isMac = process.platform === 'darwin'
 const isWin = process.platform === 'win32'
 
-function initApp() {
+function initApp () {
     if (!app.requestSingleInstanceLock()) {
         app.quit();
     }
 
     try {
+        const contextMenu = require('electron-context-menu').default;
         contextMenu({
             showSearchWithGoogle: false
         });
@@ -37,9 +37,9 @@ function initApp() {
     }
 }
 
-function createWindow() {
-    function getSavedWindowBounds() {
-        const winBounds = settingsService.get('winBounds', {width: 800, height: 600});
+function createWindow () {
+    function getSavedWindowBounds () {
+        const winBounds = settingsService.get('winBounds', { width: 800, height: 600 });
         winBounds.width = Math.max(winBounds.width, 200);
         winBounds.height = Math.max(winBounds.height, 200);
         return winBounds;
@@ -93,7 +93,7 @@ function createWindow() {
     // Handle shutdown event on Mac with minimizeOnClose
     // to prevent shutdown interrupt
     if (isMac) {
-        const {powerMonitor} = require('electron')
+        const { powerMonitor } = require('electron')
         powerMonitor.on('shutdown', () => {
             app.isQuitting = true
             app.quit()
@@ -119,7 +119,7 @@ function createWindow() {
         shell.openExternal(details.url).catch((reason) => {
             console.log(reason);
         });
-        return {action: 'deny'};
+        return { action: 'deny' };
     })
 
     settingsService.webContents = mainWindow.webContents;
