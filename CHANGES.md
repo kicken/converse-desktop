@@ -1,3 +1,12 @@
+## 14.0.0 (2026-08-19)
+
+ - Update Electron to v43.4.1
+ - Update Converse.js to v14.0.0
+ - Remove Keytar and credential management
+ - Improve electron-builder configuration
+ - Update eslint configuration
+ - Add a basic context menu 
+
 ## 12.0.0 (2025-08-31)
 
  - Add a menu item to clear saved credentials.

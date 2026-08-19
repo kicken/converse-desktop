@@ -1,7 +1,8 @@
 {
   "name": "@converse/desktop",
   "productName": "Converse Desktop",
-  "version": "12.0.0",
+  "desktopName": "org.conversejs.ConverseDesktop",
+  "version": "14.0.0",
   "description": "Desktop Jabber/XMPP client based on Converse and Electron",
   "main": "main.js",
   "scripts": {
@@ -25,19 +26,22 @@
   ],
   "license": "MPL-2.0",
   "devDependencies": {
-    "@electron/packager": "^18.3.6",
-    "electron": "^37.4.0",
+    "@electron/packager": "^20.0.0",
+    "@eslint/js": "^10.0.1",
+    "electron": "^43.1.0",
     "electron-builder": "^26.0.12",
-    "eslint": "^9.27.0"
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0"
   },
   "dependencies": {
-    "converse.js": "^12.0.0",
+    "converse.js": "^14.0.0",
     "electron-settings": "^4.0.4",
-    "keytar": "^7.9.0"
+    "electron-context-menu": "^4.1.1"
   },
   "build": {
     "appId": "com.denry.converse-desktop",
     "productName": "Converse Desktop",
+    "executableName": "converse-desktop",
     "extraFiles": [
       {
         "from": "resources/images/logo.svg",
@@ -52,7 +56,7 @@
     "linux": {
       "maintainer": "Keith Maika <keithm@aoeex.com>",
       "artifactName": "converse_desktop-${version}_${arch}.${ext}",
-      "icon": "resources/images",
+      "icon": "resources/images/logo.svg",
       "target": [
         "deb",
         "tar.gz",

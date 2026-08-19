@@ -2,7 +2,7 @@ const { ipcRenderer, contextBridge } = require('electron');
 const changedHandlers = [];
 ipcRenderer.on('settings', function (e, method, setting, newValue) {
     if (method === 'changed') {
-        for (let handler of changedHandlers) {
+        for (const handler of changedHandlers) {
             handler.call(null, setting, newValue);
         }
     }
@@ -40,17 +40,6 @@ contextBridge.exposeInMainWorld('api', {
         },
         hideEnvelope () {
             return ipcRenderer.invoke('trayService', 'hideEnvelope');
-        }
-    },
-    credentials: {
-        get () {
-            return ipcRenderer.invoke('credentials', 'getCredentials');
-        },
-        save (service, login, password) {
-            return ipcRenderer.invoke('credentials', 'saveCredentials', service, login, password);
-        },
-        clear () {
-            return ipcRenderer.invoke('credentials', 'clearCredentials');
         }
     },
     app: {
