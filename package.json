@@ -1,6 +1,7 @@
 {
   "name": "@converse/desktop",
   "productName": "Converse Desktop",
+  "desktopName": "org.conversejs.ConverseDesktop",
   "version": "14.0.0",
   "description": "Desktop Jabber/XMPP client based on Converse and Electron",
   "main": "main.js",
@@ -40,6 +41,7 @@
   "build": {
     "appId": "com.denry.converse-desktop",
     "productName": "Converse Desktop",
+    "executableName": "converse-desktop",
     "extraFiles": [
       {
         "from": "resources/images/logo.svg",
@@ -54,7 +56,7 @@
     "linux": {
       "maintainer": "Keith Maika <keithm@aoeex.com>",
       "artifactName": "converse_desktop-${version}_${arch}.${ext}",
-      "icon": "resources/images",
+      "icon": "resources/images/logo.svg",
       "target": [
         "deb",
         "tar.gz",
